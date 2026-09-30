@@ -1,69 +1,146 @@
 # RAIL-SHIELD — Passenger Journey Reliability Analytics
 
-> An original data-analytics portfolio project focused on understanding passenger journey reliability as a connected journey rather than treating delays as isolated events.
+## Portfolio Project
+
+**RAIL-SHIELD** is an original data-analytics portfolio project that treats a passenger trip as a connected journey instead of a collection of isolated delay records.
+
+It investigates how delays, disruptions, station segments and transfer windows combine to create passenger journey friction.
+
+> **Positioning:** This is a portfolio analytics concept using synthetic/sample data. It is not an official railway system and is not affiliated with Indian Railways.
 
 ## Business Problem
 
-Railway performance is often viewed through individual delay records. A passenger, however, experiences a journey made of stations, transfers, waiting windows, disruptions and connections.
+Traditional delay reporting can answer: **"How many minutes was a train delayed?"**
 
-RAIL-SHIELD models these connected events to answer:
+RAIL-SHIELD asks a broader analytical question:
 
-- Where do journeys repeatedly lose time?
-- Which station segments create the most transfer friction?
-- Which journeys are exposed to missed connections?
-- Which disruption patterns repeat across time?
-- Where should operations teams investigate first?
+**"Where does a passenger journey repeatedly lose time, and which connected events contribute to that friction?"**
 
-## Analytical Approach
+## Questions Answered
 
-**Journey events → reliability metrics → friction signals → root-cause analysis → operational dashboard**
+- Which journeys accumulate the highest delay?
+- Which stations and segments show recurring delay?
+- Which disruption types contribute the most lost time?
+- Which connections become operationally pressured?
+- Where does friction accumulate inside multi-segment journeys?
+- Which patterns deserve operational investigation?
 
-### Core KPIs
+## Analytical Framework
 
+```text
+Journey Data → Validation → Relational Model → SQL Analysis
+           → Python EDA → Reliability KPIs → Power BI
+           → Operational Investigation Signals
+```
+
+## Data Model
+
+- Stations
+- Passengers
+- Journeys
+- Journey segments
+- Disruptions
+- Connection events
+
+This supports analysis at passenger, journey, segment, station, disruption and connection levels.
+
+## Core Analytics
+
+**Reliability**
+- Total journeys
+- Completed journeys
 - On-time journey rate
-- Average delay minutes
-- Transfer-risk rate
-- Missed-connection rate
-- Average station dwell time
-- Disruption recurrence rate
-- Journey friction score
+- Average arrival delay
 
-## Technology
+**Disruption**
+- Total disruption minutes
+- Disruption frequency
+- Delay contribution by disruption type
+- Segment-level disruption contribution
 
-- MySQL / SQL
-- Python
-- Pandas / NumPy
-- Exploratory Data Analysis
-- Power BI
-- Git / GitHub
+**Connection**
+- Planned transfer time
+- Actual transfer time
+- Transfer overrun
+- Connection pressure rate
+
+**Portfolio Metric**
+- Journey Friction Score — a documented portfolio-defined composite signal using delay and disruption exposure.
+
+## Technology Stack
+
+| Layer | Technology |
+|---|---|
+| Database | MySQL |
+| SQL | Joins, CTEs, window functions, CASE, aggregation |
+| Analysis | Python, Pandas, NumPy |
+| EDA | Missingness, distributions, delay bands, operational signals |
+| Visualization | Power BI |
+| Version Control | Git / GitHub |
+| Development | VS Code / MySQL Workbench |
 
 ## Repository Structure
 
 ```text
 projects/rail-shield/
 ├── README.md
-├── sql/
-│   └── 01_schema.sql
-├── python/
-│   └── README.md
-├── powerbi/
-│   └── README.md
 ├── data/
 │   └── README.md
+├── sql/
+│   ├── 01_schema.sql
+│   ├── 02_sample_data.sql
+│   └── 03_advanced_analysis.sql
+├── python/
+│   ├── 01_eda.py
+│   └── README.md
+├── powerbi/
+│   ├── dax-measures.md
+│   ├── dashboard-design.md
+│   └── README.md
 └── docs/
-    └── analytical-framework.md
+    ├── analytical-framework.md
+    ├── business-questions.md
+    └── limitations.md
 ```
 
-## Data Model
+## Power BI Dashboard
 
-The initial relational model separates passengers, journeys, stations, journey segments, disruptions and connection events so reliability can be analysed at multiple levels.
+1. **Executive Reliability** — journey volume, on-time rate, delay and disruption KPIs.
+2. **Station & Segment Reliability** — where delay and disruption accumulate.
+3. **Connection Risk** — planned versus actual transfer pressure.
+4. **Disruption Intelligence** — recurring disruption patterns.
+5. **Journey Explorer** — drill from aggregate KPIs to journey and segment detail.
 
-## Portfolio Positioning
+## Data & Responsible Use
 
-This project is intentionally designed around an uncommon analytical framing: **passenger journey reliability**, not simply train-delay reporting.
+The current records are synthetic/sample records created for portfolio demonstration.
 
-It is a portfolio concept and does not claim to represent official railway operational data.
+This repository does not claim official railway performance, official railway definitions, deployment by a railway organization, or causality from correlation alone.
+
+A production implementation would require source provenance, privacy controls, validation, domain review and refresh governance.
+
+## What This Project Demonstrates
+
+- Translating an operational problem into analytical questions
+- Relational data modeling
+- Advanced SQL
+- Python feature engineering and EDA
+- KPI design
+- Power BI dashboard architecture
+- Responsible documentation
+- Git/GitHub-based reproducibility
+
+## Future Extensions
+
+- Larger time-series datasets
+- Route reliability benchmarking
+- Statistical anomaly detection
+- Automated data-quality tests
+- Scheduled dashboard refresh
+- Real-time ingestion architecture
 
 ## Author
 
-Sunny — Data Analytics Portfolio
+**Sunny — Data Analytics Portfolio**
+
+Target roles: Data Analyst · Junior Data Analyst · BI / Reporting Analyst · Business Analytics Intern · Operations Analyst
